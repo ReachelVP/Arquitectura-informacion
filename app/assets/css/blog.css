@@ -1,0 +1,179 @@
+/* Hoja de estilo del blog Pixel Independiente */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;600&display=swap');
+
+:root {
+  --fondo: #faf7f2;
+  --texto: #2a2433;
+  --tenue: #6b6475;
+  --acento: #5b3fb0;
+  --acento-suave: #ece6fb;
+  --borde: #e2dcd2;
+  --ancho-lectura: 68ch;
+  --ancho-sitio: 1080px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--fondo);
+  color: var(--texto);
+  font-family: 'Inter', system-ui, sans-serif;
+  line-height: 1.6;
+}
+
+a { color: var(--acento); }
+
+img { max-width: 100%; display: block; }
+
+/* Estructura general */
+.sitio { min-height: 100vh; display: flex; flex-direction: column; }
+
+main {
+  flex: 1;
+  width: 100%;
+  max-width: var(--ancho-sitio);
+  margin: 0 auto;
+  padding: 2.5rem 1rem 4rem;
+}
+
+.encabezado {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding: 1rem clamp(1rem, 4vw, 3rem);
+  background: #1b1440;
+}
+
+.encabezado a { color: #fff; text-decoration: none; }
+.encabezado nav { display: flex; gap: 1.5rem; }
+.encabezado nav a.router-link-exact-active { color: #f6c945; }
+
+.logo {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.85rem;
+}
+
+.pie {
+  text-align: center;
+  color: var(--tenue);
+  font-size: 0.85rem;
+  border-top: 1px solid var(--borde);
+  padding: 1.5rem 1rem;
+}
+
+h1, h2 { line-height: 1.25; }
+
+h1 {
+  font-family: 'Press Start 2P', monospace;
+  font-size: clamp(1.1rem, 3vw, 1.6rem);
+  line-height: 1.5;
+  margin: 0 0 1.5rem;
+}
+
+/* Portada */
+.portada .bajada { font-size: 1.2rem; max-width: var(--ancho-lectura); }
+
+.boton {
+  display: inline-block;
+  margin: 1rem 0 2.5rem;
+  padding: 0.75rem 1.25rem;
+  background: var(--acento);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.lista-simple { padding-left: 1.2rem; }
+.lista-simple li { margin-bottom: 0.6rem; }
+.lista-simple span { color: var(--tenue); }
+
+/* Listado del blog */
+.tarjetas {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.tarjeta {
+  background: #fff;
+  border: 1px solid var(--borde);
+  border-radius: 6px;
+  overflow: hidden;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.tarjeta:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgb(27 20 64 / 0.12); }
+.tarjeta > a { color: inherit; text-decoration: none; display: block; height: 100%; }
+.tarjeta img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; image-rendering: pixelated; }
+.tarjeta-cuerpo { padding: 1rem 1.25rem 1.25rem; }
+.tarjeta h2 { font-size: 1.15rem; margin: 0 0 0.5rem; color: var(--acento); }
+.tarjeta p { margin: 0 0 0.5rem; }
+
+.meta { color: var(--tenue); font-size: 0.9rem; }
+
+.etiquetas {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.etiquetas li {
+  background: var(--acento-suave);
+  color: var(--acento);
+  font-size: 0.78rem;
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+}
+
+/* Artículo: ancho máximo de lectura y tipografía serif */
+.articulo { max-width: var(--ancho-lectura); margin: 0 auto; }
+
+.portada-articulo {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 6px;
+  image-rendering: pixelated;
+  margin-bottom: 1.5rem;
+}
+
+.articulo .meta { margin: 0; }
+.articulo .etiquetas { margin-bottom: 2rem; }
+
+.contenido {
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 1.15rem;
+  line-height: 1.8;
+}
+
+.contenido h1 { font-size: clamp(1.05rem, 2.6vw, 1.4rem); margin-bottom: 2rem; }
+.contenido h1 a, .contenido h2 a { color: inherit; text-decoration: none; }
+.contenido p { margin: 0 0 1.4em; }
+
+/* Navegación entre artículos */
+.vecinos {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin: 3rem 0 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--borde);
+}
+
+.vecinos a { text-decoration: none; font-weight: 600; max-width: 48%; }
+.vecinos .siguiente { margin-left: auto; text-align: right; }
+
+/* Comentarios */
+.comentarios h2 { font-size: 1.2rem; }
+.comentarios .utterances { max-width: 100%; }
