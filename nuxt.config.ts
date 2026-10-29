@@ -14,6 +14,10 @@ export default defineNuxtConfig({
     }
   },
   content: {
+    // Usa el módulo node:sqlite incluido en Node 22, sin dependencias nativas
+    experimental: {
+      sqliteConnector: 'native'
+    },
     build: {
       markdown: {
         highlight: false
